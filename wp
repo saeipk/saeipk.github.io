@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>(주)월드피스 | 종합 경호·보안 & 행사안전 전문기업</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="(주)월드피스는 충북지방경찰청 정식 허가를 받은 종합 경호·보안 전문기업으로, 신변보호·시설경비·행사안전관리와 행사 기획·운영, 영상·미디어 제작까지 원스톱 솔루션을 제공합니다.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #111827;
+      background: #0b1220;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      padding: 24px 8vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(to right, rgba(15,23,42,0.98), rgba(30,64,175,0.75));
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      z-index: 20;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 18px;
+      color: #e5e7eb;
+    }
+    .logo span {
+      color: #60a5fa;
+    }
+    .nav-small {
+      font-size: 13px;
+      color: #9ca3af;
+    }
+    main {
+      color: #e5e7eb;
+    }
+    .hero {
+      padding: 72px 8vw 64px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+      }
+    }
+    .hero-kicker {
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .hero-title span {
+      color: #60a5fa;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: #d1d5db;
+      margin-bottom: 20px;
+      white-space: pre-line;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15,23,42,0.7);
+      border-radius: 999px;
+      padding: 6px 14px;
+      border: 1px solid rgba(96,165,250,0.4);
+      font-size: 12px;
+      margin-bottom: 20px;
+      color: #bfdbfe;
+    }
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34,197,94,0.8);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .btn-primary, .btn-ghost {
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.18s ease-out;
+    }
+    .btn-primary {
+      background: linear-gradient(to right, #2563eb, #38bdf8);
+      border-color: rgba(191,219,254,0.3);
+      color: #f9fafb;
+      box-shadow: 0 14px 35px rgba(37,99,235,0.45);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(37,99,235,0.6);
+    }
+    .btn-ghost {
+      background: rgba(15,23,42,0.7);
+      border-color: rgba(148,163,184,0.5);
+      color: #e5e7eb;
+    }
+    .btn-ghost:hover {
+      background: rgba(15,23,42,0.9);
+    }
+    .hero-meta {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .hero-meta span {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+    .hero-card {
+      border-radius: 24px;
+      padding: 22px 22px 18px;
+      background: radial-gradient(circle at top left, rgba(37,99,235,0.35), transparent 55%),
+                  linear-gradient(to bottom right, #020617, #020617, #020617);
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: 0 20px 45px rgba(15,23,42,0.9);
+    }
+    .hero-card-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+      margin-bottom: 16px;
+    }
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 13px;
+    }
+    .pill {
+      padding: 10px 10px;
+      border-radius: 16px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(55,65,81,0.8);
+    }
+    .pill-label {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .pill-value {
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(22,163,74,0.1);
+      border: 1px solid rgba(34,197,94,0.6);
+      color: #bbf7d0;
+      font-size: 11px;
+    }
+
+    section {
+      padding: 40px 8vw 32px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 20px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background: rgba(15,23,42,0.95);
+      border-radius: 18px;
+      padding: 18px 16px 16px;
+      border: 1px solid rgba(55,65,81,0.9);
+    }
+    .card-kicker {
+      font-size: 11px;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .card-text {
+      font-size: 13px;
+      color: #d1d5db;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 20px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+    .contact-panel {
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.3), transparent 55%),
+                  rgba(15,23,42,0.96);
+      border-radius: 22px;
+      padding: 20px 18px 16px;
+      border: 1px solid rgba(96,165,250,0.6);
+    }
+    .contact-line {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .contact-label {
+      display: inline-block;
+      min-width: 80px;
+      color: #9ca3af;
+    }
+    footer {
+      padding: 18px 8vw 20px;
+      border-top: 1px solid rgba(31,41,55,1);
+      font-size: 11px;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      WORLD<span>PEACE</span> GUARD
+    </div>
+    <div class="nav-small">
+      종합 경호·보안 · 행사안전 · 영상·미디어
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="hero-kicker">INFINITE SAFETY SERVICE</div>
+        <h1 class="hero-title">
+          (주)월드피스<br />
+          <span>종합 경호·보안 & 행사안전</span> 전문 파트너
+        </h1>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          충북지방경찰청 정식 허가 종합 경호·보안 전문기업
+        </div>
+        <p class="hero-sub">
+(주)월드피스는 충북지방경찰청으로부터 정식 허가를 받은
+종합 경호·보안 전문기업입니다.
+
+국가공인 경호 인력을 중심으로
+신변보호, 시설경비, 행사안전관리 등 전방위 경호 서비스를 제공하며,
+안전을 기반으로 한 행사·이벤트 기획·운영과
+영상·미디어 제작 사업까지 수행하는
+통합형 원스톱 솔루션 기업입니다.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            견적 및 상담 문의
+          </a>
+          <a href="#services" class="btn-ghost">
+            서비스 영역 보기
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span>무한안전서비스</span>를 핵심 가치로
+          고객의 생명과 재산을 지키는 일을 최우선으로 합니다.
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-title">SERVICE SNAPSHOT</div>
+        <div class="hero-card-grid">
+          <div class="pill">
+            <div class="pill-label">경호·보안</div>
+            <div class="pill-value">
+              신변보호 · 수행경호<br />
+              시설경비 · 출입통제
+            </div>
+          </div>
+          <div class="pill">
+            <div class="pill-label">행사안전</div>
+            <div class="pill-value">
+              지자체/공공 행사<br />
+              스포츠·축제 안전관리
+            </div>
+          </div>
+          <div class="pill">
+            <div class="pill-label">기획·운영</div>
+            <div class="pill-value">
+              행사·이벤트 기획<br />
+              운영 매뉴얼 · 동선설계
+            </div>
+          </div>
+          <div class="pill">
+            <div class="pill-label">영상·미디어</div>
+            <div class="pill-value">
+              행사 기록 영상<br />
+              홍보 콘텐츠 제작
+            </div>
+            <div class="pill-badge">
+              현장 보안부터 기록까지 ONE-STOP
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <h2 class="section-title">주요 서비스 영역</h2>
+      <p class="section-sub">
+        현장 상황과 리스크를 면밀히 분석하여, 경호·보안부터 행사 운영, 기록까지
+        통합 관점에서 제안드립니다.
+      </p>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-kicker">SECURITY</div>
+          <h3 class="card-title">신변보호 · 수행경호</h3>
+          <p class="card-text">
+            VIP, 기업임원, 주요 내빈 등을 대상으로 한 맞춤형 신변보호 서비스를 제공합니다.
+            동선 사전 점검, 차량·동승 경호, 행사장·이동 경호까지
+            상황에 맞춘 경호 시나리오를 설계합니다.
+          </p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">FACILITY</div>
+          <h3 class="card-title">시설경비 · 출입통제</h3>
+          <p class="card-text">
+            관공서, 학교, 기업, 행사장 등 시설 특성에 맞춘 경비·순찰·출입통제 체계를 구축합니다.
+            CCTV, 출입증, 방문객 관리 등과 연계해
+            일상적인 보안 리스크를 최소화합니다.
+          </p>
+        </article>
+        <article class="card">
+          <div class="card-kicker">EVENT SAFETY</div>
+          <h3 class="card-title">행사안전관리</h3>
+          <p class="card-text">
+            지자체·공공·기업 행사를 대상으로
+            관중 밀집, 출입 동선, 비상대피, 우천·기상 상황 등
+            다양한 리스크를 고려한 안전관리 계획을 수립하고
+            현장 운영까지 책임집니다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">문의 및 제휴</h2>
+      <p class="section-sub">
+        행사 규모와 성격, 요구 수준을 알려주시면
+        경호·보안, 행사안전, 운영·기록까지 통합 관점에서 제안을 드립니다.
+      </p>
+      <div class="contact-box">
+        <div>
+          <p style="font-size:14px; color:#e5e7eb; margin-bottom:10px;">
+            아래 연락처 정보는 실제 정보로 교체해 사용하시면 됩니다.
+          </p>
+          <ul style="font-size:13px; color:#9ca3af; list-style:square; padding-left:18px;">
+            <li>대표번호·이메일을 정확히 기입</li>
+            <li>주요 서비스 지역(예: 충청권, 전국 등) 표기</li>
+            <li>제안·입찰·제휴 문의용 별도 메일 계정 운영 추천</li>
+          </ul>
+        </div>
+        <div class="contact-panel">
+          <div class="contact-line">
+            <span class="contact-label">회사명</span>
+            (주)월드피스
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">대표번호</span>
+            000-000-0000
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">이메일</span>
+            contact@yourdomain.com
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">주소</span>
+            (예) 충청북도 청주시 ○○구 ○○로 00, ○층
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">서비스</span>
+            경호·보안 · 행사안전관리 · 행사기획·운영 · 영상·미디어
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© (주)월드피스. All rights reserved.</div>
+    <div>Infinite Safety Service · WorldPeace Guard</div>
+  </footer>
+</body>
+</html>
