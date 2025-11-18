@@ -11,6 +11,8 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 90px; /* 상단바 높이만큼 여유 */
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -512,7 +514,58 @@
     }
   </style>
 </head>
+<script>
+    // 섹션 스크롤 위치에 따라 상단 메뉴 active 클래스 자동 변경
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav a");
 
+      // 클릭했을 때도 부드럽게 스크롤 + active 적용
+      navLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href && href.startsWith("#")) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            // 부드러운 스크롤
+            window.scrollTo({
+              top: target.offsetTop - 70, // 헤더 높이 보정
+              behavior: "smooth"
+            });
+          }
+        });
+      });
+
+      // IntersectionObserver 로 현재 보이는 섹션 감지
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+
+              navLinks.forEach(link => {
+                link.classList.remove("active");
+                const href = link.getAttribute("href");
+                if (href === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: 0.5   // 섹션의 50% 이상 보일 때 그 섹션으로 판단
+        }
+      );
+
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>
 <body>
   <!-- 상단 네비 (항상 보임) -->
   <header class="topbar">
